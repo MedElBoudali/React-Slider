@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import Slider from './Components/Slider';
 import './App.css';
+import PropTypes from 'prop-types';
 
-function App() {
+const App = props => {
   return (
     <div className='App'>
-      <h1>Hello World</h1>
+      <Slider />
     </div>
   );
-}
+};
+
+App.propTypes = {};
 
 export default App;
