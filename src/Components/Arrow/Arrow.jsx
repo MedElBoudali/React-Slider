@@ -6,14 +6,17 @@ const Arrow = ({ direction, nextSlide, prevSlide }) => {
     <div
       className='ArrowContainer'
       style={{
-        ...(direction === 'left'
-          ? { left: '20px', transform: 'rotate(180deg)' }
-          : { right: '20px' })
+        ...(direction === 'left' ? { left: '20px' } : { right: '20px' })
       }}
       onClick={direction === 'left' ? prevSlide : nextSlide}>
-      <svg viewBox='0 0 24 24'>
-        <path stroke='none' d='M0 0h24v24H0z' />
-        <polyline points='9 6 15 12 9 18' />
+      <svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'>
+        <path
+          d={
+            direction === 'left'
+              ? 'M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z'
+              : 'M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z'
+          }
+        />
       </svg>
     </div>
   );
