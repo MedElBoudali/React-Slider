@@ -7,13 +7,11 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     min-height: 100%;
     scroll-behavior: smooth;
-    overflow-y: overlay;
   };
   * {
     box-sizing: border-box;
   };
   body {
-    background-color: rgb(244, 244, 244);
     margin: 0;
     height: 100%;
     width: 100%;
