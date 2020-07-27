@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { createGlobalStyle } from 'styled-components';
 import Slider from './Components/Slider';
-import './App.css';
-import PropTypes from 'prop-types';
 
-const App = props => {
+const GlobalStyle = createGlobalStyle`
+  html {
+    position: relative;
+    min-height: 100%;
+    scroll-behavior: smooth;
+    overflow-y: overlay;
+  };
+  * {
+    box-sizing: border-box;
+  };
+  body {
+    background-color: rgb(244, 244, 244);
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    overflow: hidden;
+    position: relative;
+  };
+`;
+
+const App = () => {
   return (
-    <div className='App'>
+    <Fragment>
+      <GlobalStyle />
       <Slider />
-    </div>
+    </Fragment>
   );
 };
-
-App.propTypes = {};
 
 export default App;

@@ -1,16 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const SliderContent = props => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const SliderHeader = styled.h1`
+    color: rgb(110, 110, 110);
+  `;
 
-SliderContent.propTypes = {
+  return (
+    <div>
+      <SliderHeader>Slider Content</SliderHeader>
+    </div>
+  );
+};
 
-}
+SliderContent.propTypes = {};
 
-export default SliderContent
+export default SliderContent;
