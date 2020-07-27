@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import SliderContent from './SliderContent';
 import Slide from './Slide';
-import Arrow from './Arrow';
+import Arrow from './Arrow/Arrow';
 import PropTypes from 'prop-types';
 
 const Slider = props => {
@@ -11,14 +11,14 @@ const Slider = props => {
   const [Translate, setTranslate] = useState(0);
   const [Transition] = useState(0.45);
   const [Images] = useState([
-    'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
-    'https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80',
-    'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80',
-    'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80'
+    'https://images.unsplash.com/photo-1514509897857-fb32c118ca22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80',
+    'https://images.unsplash.com/photo-1562478899-f8bca5c85ca8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    'https://images.unsplash.com/photo-1580813089076-7a92471e7074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1424&q=80',
+    'https://images.unsplash.com/photo-1566664022077-4dc1446dd619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80'
   ]);
   const [ActiveIndex, setActiveIndex] = useState(0);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (ActiveIndex === Images.length - 1) {
       setTranslate(0);
       setActiveIndex(0);
@@ -26,7 +26,7 @@ const Slider = props => {
       setActiveIndex(ActiveIndex + 1);
       setTranslate((ActiveIndex + 1) * getWidth());
     }
-  };
+  }, [ActiveIndex, Images.length]);
 
   const prevSlide = () => {
     if (ActiveIndex === 0) {
@@ -39,7 +39,7 @@ const Slider = props => {
   };
 
   useEffect(() => {
-    const SlideInt = SlideAnimation && setInterval(() => nextSlide(), 1000);
+    const SlideInt = SlideAnimation && setInterval(() => nextSlide(), 3000);
     return () => clearInterval(SlideInt);
   }, [nextSlide, SlideAnimation]);
 
@@ -61,8 +61,8 @@ const Slider = props => {
           <Slide key={id} content={image} />
         ))}
       </SliderContent>
-      {/* <Arrow direction='right' nextSlide={nextSlide} />
-      <Arrow direction='left' prevSlide={prevSlide} /> */}
+      <Arrow direction='right' nextSlide={nextSlide} />
+      <Arrow direction='left' prevSlide={prevSlide} />
     </div>
   );
 };
