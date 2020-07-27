@@ -1,9 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const SliderContent = styled.div`
-  transform: ${({ translate }) => `translateX(-${translate}px)`};
-  transition: transform ease-out ${props => props.transition}s;
   height: 100%;
+  transform: ${({ translate }) => `translateX(-${translate}px)`};
+  transition: ${({ transition }) => `transform ease-out ${transition}s`};
   width: ${({ width }) => `${width}px`};
   display: flex;
 `;

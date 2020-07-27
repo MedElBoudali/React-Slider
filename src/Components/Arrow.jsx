@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Arrow = ({ Direction }) => {
+const Arrow = ({ direction, nextSlide, prevSlide }) => {
   const ArrowContainer = styled.div`
     position: absolute;
     display: flex;
     align-content: center;
     top: 50%;
-    ${({ Direction }) =>
-      Direction === 'left' ? 'left: 20px; transform: rotate(180deg);' : 'right: 20px;'}
+    ${({ direction }) =>
+      direction === 'left' ? 'left: 20px; transform: rotate(180deg);' : 'right: 20px;'}
     background-color: rgb(0, 0, 0, 0.4);
     border-radius: 50%;
     padding: 8px;
@@ -27,7 +27,7 @@ const Arrow = ({ Direction }) => {
     }
   `;
   return (
-    <ArrowContainer Direction={Direction}>
+    <ArrowContainer direction={direction} onClick={direction === 'left' ? prevSlide : nextSlide}>
       <svg viewBox='0 0 24 24'>
         <path stroke='none' d='M0 0h24v24H0z' />
         <polyline points='9 6 15 12 9 18' />
