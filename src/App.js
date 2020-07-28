@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import SliderContainer from './Components/SliderContainer/SliderContainer';
+import SliderContainer from './Components/SliderComponent/SliderContainer/SliderContainer';
 
 const GlobalStyle = createGlobalStyle`
   html {
