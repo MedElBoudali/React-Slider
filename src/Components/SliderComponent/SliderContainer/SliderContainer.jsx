@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Slider, SliderWrapper, SliderItem } from './SliderContainer.Style';
 import Arrow from '../Arrow/Arrow';
+import Dots from '../Dots/Dots';
 
 const SliderContainer = () => {
   const [CurrentIndex, setCurrentIndex] = useState(0);
@@ -12,7 +13,10 @@ const SliderContainer = () => {
     'https://images.unsplash.com/photo-1514509897857-fb32c118ca22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80',
     'https://images.unsplash.com/photo-1562478899-f8bca5c85ca8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
     'https://images.unsplash.com/photo-1580813089076-7a92471e7074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1424&q=80',
-    'https://images.unsplash.com/photo-1566664022077-4dc1446dd619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80'
+    'https://images.unsplash.com/photo-1566664022077-4dc1446dd619?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80',
+    [
+      'https://images.unsplash.com/photo-1577134351686-c6dca1c59964?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1535&q=80'
+    ]
   ];
   const imagesLength = Images.length;
 
@@ -52,6 +56,13 @@ const SliderContainer = () => {
       </SliderWrapper>
       <Arrow direction='right' nextSlide={nextSlide} />
       <Arrow direction='left' prevSlide={prevSlide} />
+      <Dots
+        Images={Images}
+        CurrentIndex={CurrentIndex}
+        setCurrentIndex={setCurrentIndex}
+        setTranslate={setTranslate}
+        width={getWidth()}
+      />
     </Slider>
   );
 };
